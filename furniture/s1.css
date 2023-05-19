@@ -1,0 +1,43 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.burger-menu {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.line {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin-bottom: 5px;
+}
+
+.menu {
+    display: none;
+}
+
+.menu.active {
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: gold;
+    padding: 10px;
+    z-index: 999;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: greenyellow;
+    display: block;
+    padding: 10px;
+}

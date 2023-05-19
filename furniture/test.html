@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="s1.css">
+    <style>
+        /* Стили для шапки */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #000;
+            z-index: 999;
+        }
+
+        /* Стили для полосы красного цвета */
+        .red-bar {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            height: 4px;
+            background: red;
+            z-index: 998;
+            width: 0;
+            /* Полоса изначально невидима */
+            transition: width 0.3s ease;
+            /* Плавное появление */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <nav class="navbar">
+            <div class="burger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <ul class="menu">
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Тренды</a></li>
+                <li><a href="#">Истории</a></li>
+                <li><a href="#">Музыка</a></li>
+                <li><a href="#">Спорт</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="red-bar"></div>
+
+    <div style="height: 200vh;" class="content">
+        <!-- Остальное содержимое страницы -->
+    </div>
+
+    <script>
+        var redBar = document.querySelector('.red-bar');
+        var headerHeight = document.querySelector('.header').offsetHeight;
+        var documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            var progress = (scrollTop - headerHeight) / (documentHeight - headerHeight);
+            var width = Math.max(0, Math.min(progress, 1)) * 100;
+
+            redBar.style.setProperty('width', width + '%');
+        });
+
+        window.addEventListener('resize', function () {
+            documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        });
+
+
+
+    </script>
+    <script>
+        const burgerMenu = document.querySelector('.burger-menu');
+        const menu = document.querySelector('.menu');
+        const lines = document.querySelectorAll('.line');
+
+        burgerMenu.addEventListener('click', () => {
+            menu.classList.toggle('active');
+            lines.forEach(line => line.classList.toggle('active'));
+        });
+
+    </script>
+</body>
+
+</html>
